@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+bool IsPrime[20000000] = {1};
+int Prime[1500000] = { 0 };
+int main()
+   {  int N,count(0),countGN(0);
+      cin>>N;
+      for(int i=0;i<20000000;i++)
+		  IsPrime[i]=true;
+	  for(int i=2;i<20000000;i++)
+	     {  if(IsPrime[i])
+		       Prime[count++]=i;
+	        for(int j=0;j<count&&Prime[j]*i<=20000000;j++)
+			  {  IsPrime[i*Prime[j]]=false;
+			     if(i%Prime[j]==0)
+					 break;
+			}
+	  }
+	  for(int i=2;;i++)
+	  {  if(i%2==0||IsPrime[i]==true)
+	        countGN++;
+	     if(countGN==N)
+		 {  cout<<(i+2);
+		    return 0;
+			}
+	  }
+}
+	        
+		       
+
+
+ 
+
